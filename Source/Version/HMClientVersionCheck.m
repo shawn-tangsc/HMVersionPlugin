@@ -8,6 +8,7 @@
 #import "HMClientVersionCheck.h"
 #import "HMCheckClientVersionRequest.h"
 #import "BMMediatorManager.h"
+#import "BMConfigManager.h"
 @interface HMClientVersionCheck()
 @property (nonatomic, strong)  UIAlertController *alertVc;
 @property (strong, nonatomic) UIWindow *window;
@@ -64,6 +65,13 @@
 #pragma mark 大版本更新校验
 -(void) checkClientVersionByBlock:(hmClientCheckResultCallBack)callBack{
     [self closeAlertVC];
+    if (![BMConfigManager shareInstance].platform.url.clientUpdate.length){
+        if(callBack){
+            callBack(NO);
+        }
+        return;
+    };
+    
     HMCheckClientVersionRequest *checkClientVersion = [[HMCheckClientVersionRequest alloc]initWithAppName:@"home-app" appVersion:K_APP_VERSION];
     //    __weak typeof(self) weakSelf = self;
     [checkClientVersion startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
