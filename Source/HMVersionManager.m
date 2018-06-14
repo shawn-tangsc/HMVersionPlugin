@@ -12,7 +12,7 @@
 #import "HMUpdateBundlejsRequest.h"
 #import "BMResourceManager.h"
 #import "BMConfigManager.h"
-#import <SVProgressHUD.h>
+#import "SVProgressHUD.h"
 #import "NSData+bsdiff.h"
 #import "BMResourceCheck.h"
 #import "BMMediatorManager.h"
