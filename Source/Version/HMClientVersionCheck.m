@@ -72,7 +72,7 @@
         return;
     };
     
-    HMCheckClientVersionRequest *checkClientVersion = [[HMCheckClientVersionRequest alloc]initWithAppName:@"home-app" appVersion:K_APP_VERSION];
+    HMCheckClientVersionRequest *checkClientVersion = [[HMCheckClientVersionRequest alloc]initWithAppName:[BMConfigManager shareInstance].platform.appName appVersion:K_APP_VERSION];
     //    __weak typeof(self) weakSelf = self;
     [checkClientVersion startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         WXLogInfo(@"%@ Request_Success >>>>>>>>>>>>>>>>:%@",NSStringFromClass([self class]),request.requestTask.originalRequest);

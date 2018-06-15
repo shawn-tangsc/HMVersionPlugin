@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "HMVersionPlugin"
-s.version      = "1.0.3"
+s.version      = "1.0.4"
 s.summary      = "HMVersionPlugin Source ."
 s.homepage     = 'https://github.com/shawn-tangsc/HMVersionPlugin'
 s.license      = "MIT"
