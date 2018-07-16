@@ -71,22 +71,13 @@ typedef NS_ENUM(NSUInteger, BMResourceCheckUpdateCode) {
 /** app进入激活状态 */
 - (void)appDidBecomeActive
 {
-    /** 检查js更新 */
-    /** 只有在wifi状态下，才去判断激活*/
-    Reachability * reachabilityManager = [Reachability reachabilityForInternetConnection];
-    if ([reachabilityManager currentReachabilityStatus] == ReachableViaWiFi) {
-        HMClientVersionCheck * cli = [[HMClientVersionCheck alloc] init];
-        [cli checkClientVersionByBlock:^(BOOL check) {
-            if(!check){
-                [self checkNewVersion:YES];
-            }
-        }];
-        /** 检查js更新 */
-        
-    }else {
-        WXLog(@"不在wifi内");
-    }
-    
+
+    HMClientVersionCheck * cli = [[HMClientVersionCheck alloc] init];
+    [cli checkClientVersionByBlock:^(BOOL check) {
+        if(!check){
+            [self checkNewVersion:YES];
+        }
+    }];
 }
 
 /** 检查js资源文件是否有新版本 */
