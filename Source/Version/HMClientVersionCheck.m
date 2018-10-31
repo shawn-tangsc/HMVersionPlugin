@@ -9,6 +9,7 @@
 #import "HMCheckClientVersionRequest.h"
 #import "BMMediatorManager.h"
 #import "BMConfigManager.h"
+
 @interface HMClientVersionCheck()
 @property (nonatomic, strong)  UIAlertController *alertVc;
 @property (strong, nonatomic) UIWindow *window;
@@ -58,7 +59,9 @@
     else
         result = window.rootViewController;
     
-    return result;
+    UINavigationController *navVC = (UINavigationController *)result;
+    
+    return navVC.visibleViewController;
 }
 
 
@@ -104,7 +107,9 @@
             [self.alertVc addAction:cancelAction];
             [self.alertVc addAction:confirmAction];
 //            UIViewController *currentViewController = [BMMediatorManager shareInstance].currentViewController;
+
             [currentViewController presentViewController:self.alertVc animated:YES completion:nil];
+
             
         }else if ([@"APP0002" isEqualToString:resCode]){//强制更新
             
@@ -118,6 +123,7 @@
             }];
             [self.alertVc addAction:confirmAction];
 //            UIViewController *currentViewController = [BMMediatorManager shareInstance].currentViewController;
+
             [currentViewController presentViewController:self.alertVc animated:YES completion:nil];
         }else {
             if(callBack){
